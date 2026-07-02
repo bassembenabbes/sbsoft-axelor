@@ -10,22 +10,24 @@
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0E1A2B;
-    --bg-panel:#142238;
-    --bg-panel-2:#1B2C46;
-    --accent:#E3A23C;
-    --accent-soft:rgba(227,162,60,0.14);
-    --teal:#3FBFA8;
-    --text:#EEF2F7;
-    --text-muted:#8FA0B8;
-    --line:rgba(255,255,255,0.09);
-    --radius:2px;
+    --bg:#F6F7FA;
+    --bg-alt:#EEF1F6;
+    --panel:#FFFFFF;
+    --ink:#16202C;
+    --muted:#5B6B82;
+    --line:#E1E5EC;
+    --accent:#1B4B8F;
+    --accent-ink:#ffffff;
+    --accent-soft:rgba(27,75,143,0.08);
+    --teal:#1F9E8B;
+    --amber:#C77D1E;
+    --shadow:0 2px 4px rgba(16,32,60,0.04), 0 10px 24px rgba(16,32,60,0.06);
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
   body{
     background:var(--bg);
-    color:var(--text);
+    color:var(--ink);
     font-family:'Inter',system-ui,sans-serif;
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
@@ -37,6 +39,7 @@
     letter-spacing:0.01em;
     line-height:1.05;
     text-transform:uppercase;
+    color:var(--ink);
   }
   .mono{
     font-family:'IBM Plex Mono',monospace;
@@ -53,13 +56,6 @@
     outline:2px solid var(--accent);
     outline-offset:3px;
   }
-
-  /* ---------- decorative dashed rule ---------- */
-  .dashed-rule{
-    border:none;
-    border-top:1px dashed var(--line);
-    margin:0;
-  }
   .eyebrow{
     display:inline-flex;
     align-items:center;
@@ -67,13 +63,13 @@
     font-size:12px;
     color:var(--accent);
     text-transform:uppercase;
-    font-weight:500;
+    font-weight:600;
     margin-bottom:18px;
   }
   .eyebrow::before{
     content:"";
     width:22px;
-    height:1px;
+    height:2px;
     background:var(--accent);
     display:inline-block;
   }
@@ -83,7 +79,7 @@
     position:fixed;
     top:0;left:0;right:0;
     z-index:100;
-    background:rgba(14,26,43,0.85);
+    background:rgba(246,247,250,0.88);
     backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line);
   }
@@ -125,7 +121,7 @@
     font-family:'IBM Plex Mono',monospace;
     font-size:9px;
     letter-spacing:0.12em;
-    color:var(--text-muted);
+    color:var(--muted);
     text-transform:uppercase;
     font-weight:400;
   }
@@ -137,10 +133,10 @@
   }
   nav a.navlink{
     font-size:14px;
-    color:var(--text-muted);
+    color:var(--muted);
     transition:color .2s;
   }
-  nav a.navlink:hover{color:var(--text);}
+  nav a.navlink:hover{color:var(--accent);}
   .btn{
     display:inline-flex;
     align-items:center;
@@ -157,17 +153,18 @@
   }
   .btn-accent{
     background:var(--accent);
-    color:#12202f;
+    color:var(--accent-ink);
   }
-  .btn-accent:hover{background:#f0b45c;}
+  .btn-accent:hover{background:#163e75;}
   .btn-outline{
     border-color:var(--line);
-    color:var(--text);
+    color:var(--ink);
+    background:var(--panel);
   }
   .btn-outline:hover{border-color:var(--accent);color:var(--accent);}
   .menu-toggle{
     display:none;
-    background:none;border:1px solid var(--line);
+    background:var(--panel);border:1px solid var(--line);
     width:42px;height:42px;
     align-items:center;justify-content:center;
     cursor:pointer;
@@ -176,7 +173,7 @@
     content:"";
     display:block;
     width:18px;height:1.5px;
-    background:var(--text);
+    background:var(--ink);
     position:relative;
     transition:.2s;
   }
@@ -204,7 +201,7 @@
   }
   .hero p.lead{
     font-size:17px;
-    color:var(--text-muted);
+    color:var(--muted);
     max-width:520px;
     margin-bottom:34px;
   }
@@ -231,13 +228,14 @@
   }
   .hero-stats .lbl{
     font-size:12px;
-    color:var(--text-muted);
+    color:var(--muted);
   }
 
   /* hero manifest panel */
   .manifest{
-    background:var(--bg-panel);
+    background:var(--panel);
     border:1px solid var(--line);
+    box-shadow:var(--shadow);
     padding:26px;
     position:relative;
   }
@@ -249,7 +247,7 @@
     padding:0 10px;
     font-family:'IBM Plex Mono',monospace;
     font-size:10px;
-    color:var(--text-muted);
+    color:var(--muted);
     letter-spacing:0.1em;
   }
   .manifest-row{
@@ -262,12 +260,8 @@
     font-size:12px;
   }
   .manifest-row:last-child{border-bottom:none;}
-  .manifest-row .tag{
-    color:var(--text-muted);
-  }
-  .manifest-row .val{
-    color:var(--accent);
-  }
+  .manifest-row .tag{color:var(--muted);}
+  .manifest-row .val{color:var(--accent);font-weight:500;}
   .stamp{
     margin-top:20px;
     display:inline-block;
@@ -280,12 +274,12 @@
     transform:rotate(-4deg);
   }
 
-  /* ---------- flow diagram (signature element) ---------- */
+  /* ---------- flow diagram ---------- */
   .flow-section{
     padding:70px 0;
     border-top:1px solid var(--line);
     border-bottom:1px solid var(--line);
-    background:linear-gradient(180deg,rgba(255,255,255,0.015),transparent);
+    background:var(--bg-alt);
   }
   .flow-head{
     text-align:center;
@@ -293,7 +287,7 @@
     margin:0 auto 56px;
   }
   .flow-head h2{font-size:clamp(26px,3.6vw,36px);margin-bottom:14px;}
-  .flow-head p{color:var(--text-muted);font-size:15px;}
+  .flow-head p{color:var(--muted);font-size:15px;}
   .flow{
     position:relative;
     display:flex;
@@ -308,7 +302,7 @@
     position:absolute;
     top:29px;left:5%;right:5%;
     height:0;
-    border-top:1px dashed var(--line);
+    border-top:1px dashed #C6CDDA;
   }
   .flow-runner{
     position:absolute;
@@ -325,38 +319,19 @@
     92%{opacity:1;}
     100%{left:95%;opacity:0;}
   }
-  .flow-node{
-    position:relative;
-    z-index:2;
-    width:22%;
-    text-align:center;
-  }
+  .flow-node{position:relative;z-index:2;width:22%;text-align:center;}
   .flow-node .dot{
     width:14px;height:14px;
     border:2px solid var(--accent);
-    background:var(--bg);
+    background:var(--bg-alt);
     margin:0 auto 18px;
     transform:rotate(45deg);
   }
-  .flow-node .idx{
-    display:block;
-    font-family:'IBM Plex Mono',monospace;
-    font-size:11px;
-    color:var(--text-muted);
-    margin-bottom:8px;
-  }
-  .flow-node h4{
-    font-size:18px;
-    margin-bottom:8px;
-  }
-  .flow-node p{
-    font-size:12.5px;
-    color:var(--text-muted);
-    padding:0 6px;
-  }
+  .flow-node .idx{display:block;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);margin-bottom:8px;}
+  .flow-node h4{font-size:18px;margin-bottom:8px;}
+  .flow-node p{font-size:12.5px;color:var(--muted);padding:0 6px;}
 
-  /* ---------- modules ---------- */
-  .modules{padding:100px 0;}
+  /* ---------- generic section head ---------- */
   .section-head{
     display:flex;
     justify-content:space-between;
@@ -366,8 +341,10 @@
     flex-wrap:wrap;
   }
   .section-head h2{font-size:clamp(28px,4vw,40px);}
-  .section-head p{color:var(--text-muted);max-width:380px;font-size:14.5px;}
+  .section-head p{color:var(--muted);max-width:380px;font-size:14.5px;}
 
+  /* ---------- modules ---------- */
+  .modules{padding:100px 0;}
   .module-grid{
     display:grid;
     grid-template-columns:repeat(2,1fr);
@@ -375,73 +352,85 @@
     background:var(--line);
     border:1px solid var(--line);
   }
-  .module-card{
-    background:var(--bg);
-    padding:38px 34px;
-    transition:background .25s;
-  }
-  .module-card:hover{background:var(--bg-panel);}
-  .module-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    margin-bottom:22px;
-  }
+  .module-card{background:var(--panel);padding:38px 34px;transition:background .25s;}
+  .module-card:hover{background:var(--bg-alt);}
+  .module-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:22px;}
   .module-icon{
     width:46px;height:46px;
     border:1px solid var(--line);
+    background:var(--accent-soft);
     display:flex;align-items:center;justify-content:center;
     color:var(--accent);
   }
-  .module-ref{
-    font-family:'IBM Plex Mono',monospace;
-    font-size:11px;
-    color:var(--text-muted);
-  }
-  .module-card h3{
-    font-size:24px;
-    margin-bottom:10px;
-  }
-  .module-card > p{
-    color:var(--text-muted);
-    font-size:14.5px;
-    margin-bottom:18px;
-  }
-  .module-card ul{
-    list-style:none;
-    display:flex;
-    flex-direction:column;
-    gap:9px;
-  }
-  .module-card li{
-    font-size:13.5px;
-    color:var(--text);
-    display:flex;
-    align-items:baseline;
-    gap:10px;
-  }
-  .module-card li::before{
-    content:"â€”";
-    color:var(--accent);
-    flex-shrink:0;
-  }
+  .module-ref{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);}
+  .module-card h3{font-size:24px;margin-bottom:10px;}
+  .module-card > p{color:var(--muted);font-size:14.5px;margin-bottom:18px;}
+  .module-card ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+  .module-card li{font-size:13.5px;color:var(--ink);display:flex;align-items:baseline;gap:10px;}
+  .module-card li::before{content:"â€”";color:var(--accent);flex-shrink:0;}
 
-  /* ---------- why section ---------- */
-  .why{
-    padding:90px 0;
-    background:var(--bg-panel);
-    border-top:1px solid var(--line);
-    border-bottom:1px solid var(--line);
-  }
-  .why-grid{
+  /* ---------- screenshots ---------- */
+  .screens{padding:100px 0;background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .screen-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:0;
+    gap:26px;
   }
-  .why-card{
-    padding:0 34px;
-    border-left:1px solid var(--line);
+  .screen-card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    box-shadow:var(--shadow);
+    overflow:hidden;
   }
+  .screen-chrome{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    padding:10px 14px;
+    border-bottom:1px solid var(--line);
+    background:#FAFBFD;
+  }
+  .screen-chrome i{width:8px;height:8px;border-radius:50%;background:#D7DCE3;}
+  .screen-chrome span{
+    margin-left:10px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;
+    color:var(--muted);
+    letter-spacing:0.05em;
+  }
+  .screen-body{padding:20px;height:190px;position:relative;}
+  .sb-bar{background:var(--accent-soft);border-radius:2px;}
+  /* mock: achats table */
+  .mock-rows{display:flex;flex-direction:column;gap:8px;}
+  .mock-row{display:flex;align-items:center;gap:8px;}
+  .mock-row .c1{width:34px;height:10px;background:#E1E5EC;border-radius:2px;}
+  .mock-row .c2{flex:1;height:10px;background:#EEF1F6;border-radius:2px;}
+  .mock-row .c3{width:44px;height:16px;border:1px solid var(--teal);color:var(--teal);border-radius:2px;font-size:8px;font-family:'IBM Plex Mono',monospace;display:flex;align-items:center;justify-content:center;}
+  /* mock: stock bars */
+  .mock-bars{display:flex;align-items:flex-end;gap:10px;height:150px;padding-top:10px;}
+  .mock-bars .bar{flex:1;background:var(--accent);opacity:0.85;border-radius:2px 2px 0 0;}
+  .mock-bars .bar.b2{background:var(--teal);}
+  .mock-bars .bar.b3{background:var(--amber);}
+  /* mock: reporting donut */
+  .mock-report{display:flex;align-items:center;gap:20px;height:100%;}
+  .donut{
+    width:110px;height:110px;border-radius:50%;
+    background:conic-gradient(var(--accent) 0 45%, var(--teal) 45% 72%, var(--amber) 72% 100%);
+    position:relative;flex-shrink:0;
+  }
+  .donut::after{content:"";position:absolute;inset:20px;background:var(--panel);border-radius:50%;}
+  .mock-legend{display:flex;flex-direction:column;gap:10px;font-size:10px;font-family:'IBM Plex Mono',monospace;color:var(--muted);}
+  .mock-legend span{display:flex;align-items:center;gap:8px;}
+  .mock-legend i{width:8px;height:8px;display:inline-block;border-radius:2px;}
+  .screen-caption{padding:16px 20px;border-top:1px solid var(--line);}
+  .screen-caption h4{font-size:15px;text-transform:none;font-family:'Inter',sans-serif;font-weight:600;margin-bottom:4px;}
+  .screen-caption p{font-size:12.5px;color:var(--muted);}
+  .screens-note{text-align:center;font-size:12.5px;color:var(--muted);margin-top:28px;font-family:'IBM Plex Mono',monospace;}
+
+  /* ---------- why ---------- */
+  .why{padding:90px 0;background:var(--panel);}
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;}
+  .why-card{padding:0 34px;border-left:1px solid var(--line);}
   .why-card:first-child{border-left:none;padding-left:0;}
   .why-card .tag{
     display:inline-block;
@@ -454,155 +443,132 @@
     margin-bottom:16px;
   }
   .why-card h3{font-size:20px;margin-bottom:10px;}
-  .why-card p{color:var(--text-muted);font-size:14px;}
+  .why-card p{color:var(--muted);font-size:14px;}
+
+  /* ---------- pricing ---------- */
+  .pricing{padding:100px 0;background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:stretch;}
+  .price-card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    padding:34px 30px;
+    display:flex;
+    flex-direction:column;
+  }
+  .price-card.featured{
+    border-color:var(--accent);
+    box-shadow:var(--shadow);
+    position:relative;
+  }
+  .price-card.featured::before{
+    content:"RECOMMANDÃ‰";
+    position:absolute;
+    top:-11px;left:30px;
+    background:var(--accent);
+    color:#fff;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;
+    letter-spacing:0.1em;
+    padding:4px 10px;
+  }
+  .price-tag{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);margin-bottom:8px;}
+  .price-card h3{font-size:24px;margin-bottom:10px;}
+  .price-card .price-desc{color:var(--muted);font-size:13.5px;margin-bottom:22px;min-height:40px;}
+  .price-value{font-family:'Big Shoulders Display',sans-serif;font-size:20px;font-weight:700;color:var(--accent);margin-bottom:22px;text-transform:none;}
+  .price-card ul{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:28px;flex:1;}
+  .price-card li{font-size:13.5px;display:flex;gap:10px;align-items:baseline;}
+  .price-card li::before{content:"âœ“";color:var(--teal);font-weight:700;flex-shrink:0;}
+  .pricing-note{text-align:center;font-size:12.5px;color:var(--muted);margin-top:30px;}
+
+  /* ---------- testimonials ---------- */
+  .testimonials{padding:100px 0;background:var(--panel);}
+  .test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .test-card{
+    background:var(--bg-alt);
+    border:1px solid var(--line);
+    padding:30px 26px;
+    display:flex;
+    flex-direction:column;
+  }
+  .test-stars{color:var(--amber);font-size:13px;letter-spacing:2px;margin-bottom:16px;}
+  .test-card p.quote{font-size:14.5px;color:var(--ink);margin-bottom:22px;flex:1;}
+  .test-person{display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px dashed var(--line);}
+  .test-avatar{
+    width:38px;height:38px;border-radius:50%;
+    background:var(--accent-soft);color:var(--accent);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:13px;
+    flex-shrink:0;
+  }
+  .test-person .name{font-size:13.5px;font-weight:600;}
+  .test-person .role{font-size:11.5px;color:var(--muted);}
+  .testimonials-note{text-align:center;font-size:12px;color:var(--muted);margin-top:26px;font-family:'IBM Plex Mono',monospace;}
 
   /* ---------- contact ---------- */
   .contact{padding:110px 0;}
-  .contact-grid{
-    display:grid;
-    grid-template-columns:0.9fr 1.1fr;
-    gap:0;
-    border:1px solid var(--line);
-  }
-  .contact-info{
-    padding:48px 40px;
-    background:var(--bg-panel);
-    border-right:1px solid var(--line);
-  }
-  .contact-info .eyebrow{margin-bottom:14px;}
+  .contact-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:0;border:1px solid var(--line);box-shadow:var(--shadow);}
+  .contact-info{padding:48px 40px;background:var(--bg-alt);border-right:1px solid var(--line);}
   .contact-info h2{font-size:clamp(26px,3.4vw,34px);margin-bottom:18px;}
-  .contact-info > p{color:var(--text-muted);font-size:14.5px;margin-bottom:34px;}
+  .contact-info > p{color:var(--muted);font-size:14.5px;margin-bottom:34px;}
   .person{
-    display:flex;
-    gap:16px;
-    align-items:center;
-    padding:20px 0;
-    border-top:1px dashed var(--line);
-    border-bottom:1px dashed var(--line);
-    margin-bottom:26px;
+    display:flex;gap:16px;align-items:center;padding:20px 0;
+    border-top:1px dashed var(--line);border-bottom:1px dashed var(--line);margin-bottom:26px;
   }
   .person .avatar{
-    width:52px;height:52px;
-    background:var(--accent-soft);
-    border:1px solid var(--accent);
-    color:var(--accent);
+    width:52px;height:52px;background:var(--accent-soft);border:1px solid var(--accent);color:var(--accent);
     display:flex;align-items:center;justify-content:center;
-    font-family:'Big Shoulders Display',sans-serif;
-    font-weight:700;
-    font-size:18px;
-    flex-shrink:0;
+    font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:18px;flex-shrink:0;
   }
   .person .name{font-weight:600;font-size:15.5px;}
-  .person .role{font-size:12.5px;color:var(--text-muted);font-family:'IBM Plex Mono',monospace;}
+  .person .role{font-size:12.5px;color:var(--muted);font-family:'IBM Plex Mono',monospace;}
   .contact-links{display:flex;flex-direction:column;gap:14px;}
   .contact-link{
-    display:flex;
-    align-items:center;
-    gap:14px;
-    font-size:14.5px;
-    padding:12px 14px;
-    border:1px solid var(--line);
+    display:flex;align-items:center;gap:14px;font-size:14.5px;padding:12px 14px;
+    border:1px solid var(--line);background:var(--panel);
     transition:border-color .2s, background .2s;
   }
-  .contact-link:hover{border-color:var(--accent);background:rgba(227,162,60,0.06);}
+  .contact-link:hover{border-color:var(--accent);background:var(--accent-soft);}
   .contact-link .ic{
-    width:34px;height:34px;
-    border:1px solid var(--line);
-    display:flex;align-items:center;justify-content:center;
-    color:var(--accent);
-    flex-shrink:0;
+    width:34px;height:34px;border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;color:var(--accent);flex-shrink:0;
   }
-  .contact-link .meta small{
-    display:block;
-    color:var(--text-muted);
-    font-size:11px;
-    font-family:'IBM Plex Mono',monospace;
-    letter-spacing:0.05em;
-  }
-
-  .contact-form{
-    padding:48px 40px;
-  }
+  .contact-link .meta small{display:block;color:var(--muted);font-size:11px;font-family:'IBM Plex Mono',monospace;letter-spacing:0.05em;}
+  .contact-form{padding:48px 40px;background:var(--panel);}
   .contact-form h3{font-size:20px;margin-bottom:6px;}
-  .contact-form > p{color:var(--text-muted);font-size:13.5px;margin-bottom:28px;}
+  .contact-form > p{color:var(--muted);font-size:13.5px;margin-bottom:28px;}
   .field{margin-bottom:20px;}
   .field label{
-    display:block;
-    font-family:'IBM Plex Mono',monospace;
-    font-size:11px;
-    letter-spacing:0.08em;
-    color:var(--text-muted);
-    margin-bottom:8px;
-    text-transform:uppercase;
+    display:block;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;
+    color:var(--muted);margin-bottom:8px;text-transform:uppercase;
   }
   .field input,.field select,.field textarea{
-    width:100%;
-    background:var(--bg-panel);
-    border:1px solid var(--line);
-    color:var(--text);
-    padding:13px 14px;
-    font-family:'Inter',sans-serif;
-    font-size:14px;
+    width:100%;background:var(--bg-alt);border:1px solid var(--line);color:var(--ink);
+    padding:13px 14px;font-family:'Inter',sans-serif;font-size:14px;
   }
   .field textarea{resize:vertical;min-height:100px;}
-  .field input:focus,.field select:focus,.field textarea:focus{
-    border-color:var(--accent);
-    outline:none;
-  }
-  .field-row{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:16px;
-  }
-  .form-note{
-    font-size:12px;
-    color:var(--text-muted);
-    margin-top:14px;
-  }
-  .wa-submit{
-    width:100%;
-    justify-content:center;
-    margin-top:6px;
-  }
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent);outline:none;background:var(--panel);}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .form-note{font-size:12px;color:var(--muted);margin-top:14px;}
+  .wa-submit{width:100%;justify-content:center;margin-top:6px;}
 
   /* ---------- footer ---------- */
-  footer{
-    border-top:1px solid var(--line);
-    padding:36px 0;
-  }
-  .footer-grid{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:16px;
-  }
+  footer{border-top:1px solid var(--line);padding:36px 0;background:var(--bg-alt);}
+  .footer-grid{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
   footer .logo{font-size:16px;}
-  footer p{font-size:12.5px;color:var(--text-muted);}
+  footer p{font-size:12.5px;color:var(--muted);}
 
   /* ---------- floating whatsapp ---------- */
   .wa-float{
-    position:fixed;
-    bottom:26px;right:26px;
-    z-index:200;
-    width:58px;height:58px;
-    background:#25D366;
+    position:fixed;bottom:26px;right:26px;z-index:200;
+    width:58px;height:58px;background:#25D366;
     display:flex;align-items:center;justify-content:center;
-    box-shadow:0 6px 20px rgba(37,211,102,0.35);
-    border-radius:50%;
+    box-shadow:0 6px 20px rgba(37,211,102,0.35);border-radius:50%;
   }
   .wa-float::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    border-radius:50%;
-    border:2px solid #25D366;
-    animation:pulse 2.2s ease-out infinite;
+    content:"";position:absolute;inset:0;border-radius:50%;
+    border:2px solid #25D366;animation:pulse 2.2s ease-out infinite;
   }
-  @keyframes pulse{
-    0%{transform:scale(1);opacity:.7;}
-    100%{transform:scale(1.7);opacity:0;}
-  }
+  @keyframes pulse{0%{transform:scale(1);opacity:.7;}100%{transform:scale(1.7);opacity:0;}}
 
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto;}
@@ -614,9 +580,12 @@
   @media (max-width:900px){
     .hero-grid{grid-template-columns:1fr;}
     .module-grid{grid-template-columns:1fr;}
+    .screen-grid{grid-template-columns:1fr;}
     .why-grid{grid-template-columns:1fr;gap:30px;}
     .why-card{border-left:none;padding-left:0;border-top:1px solid var(--line);padding-top:28px;}
     .why-card:first-child{border-top:none;padding-top:0;}
+    .price-grid{grid-template-columns:1fr;}
+    .test-grid{grid-template-columns:1fr;}
     .contact-grid{grid-template-columns:1fr;}
     .contact-info{border-right:none;border-bottom:1px solid var(--line);}
     .flow{flex-wrap:wrap;gap:30px 0;}
@@ -626,16 +595,9 @@
   }
   @media (max-width:720px){
     nav ul{
-      position:fixed;
-      top:74px;left:0;right:0;
-      background:var(--bg);
-      border-bottom:1px solid var(--line);
-      flex-direction:column;
-      align-items:flex-start;
-      padding:24px 28px;
-      gap:20px;
-      transform:translateY(-130%);
-      transition:transform .3s ease;
+      position:fixed;top:74px;left:0;right:0;background:var(--bg);
+      border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;
+      padding:24px 28px;gap:20px;transform:translateY(-130%);transition:transform .3s ease;
     }
     nav ul.open{transform:translateY(0);}
     .menu-toggle{display:flex;}
@@ -656,8 +618,9 @@
     <nav>
       <ul id="navList">
         <li><a class="navlink" href="#modules">Modules</a></li>
-        <li><a class="navlink" href="#flux">Fonctionnement</a></li>
-        <li><a class="navlink" href="#pourquoi">Pourquoi Axelor</a></li>
+        <li><a class="navlink" href="#apercu">AperÃ§u</a></li>
+        <li><a class="navlink" href="#tarifs">Tarifs</a></li>
+        <li><a class="navlink" href="#avis">Avis clients</a></li>
         <li><a class="navlink" href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -697,7 +660,7 @@
     </div>
   </section>
 
-  <!-- FLOW / SIGNATURE -->
+  <!-- FLOW -->
   <section class="flow-section" id="flux">
     <div class="container">
       <div class="flow-head">
@@ -814,6 +777,76 @@
     </div>
   </section>
 
+  <!-- SCREENSHOTS -->
+  <section class="screens" id="apercu">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow mono">APERÃ‡U</div>
+          <h2>Ã€ quoi ressemble l'interface</h2>
+        </div>
+        <p>Des Ã©crans clairs, pensÃ©s pour une utilisation quotidienne sans formation lourde.</p>
+      </div>
+
+      <div class="screen-grid">
+        <div class="screen-card">
+          <div class="screen-chrome"><i></i><i></i><i></i><span>ACHATS Â· COMMANDES FOURNISSEURS</span></div>
+          <div class="screen-body">
+            <div class="mock-rows">
+              <div class="mock-row"><div class="c1"></div><div class="c2"></div><div class="c3">ReÃ§u</div></div>
+              <div class="mock-row"><div class="c1"></div><div class="c2"></div><div class="c3">EnvoyÃ©</div></div>
+              <div class="mock-row"><div class="c1"></div><div class="c2"></div><div class="c3">ReÃ§u</div></div>
+              <div class="mock-row"><div class="c1"></div><div class="c2"></div><div class="c3">En cours</div></div>
+              <div class="mock-row"><div class="c1"></div><div class="c2"></div><div class="c3">ReÃ§u</div></div>
+            </div>
+          </div>
+          <div class="screen-caption">
+            <h4>Suivi des commandes</h4>
+            <p>Statut de chaque commande fournisseur en un coup d'Å“il.</p>
+          </div>
+        </div>
+
+        <div class="screen-card">
+          <div class="screen-chrome"><i></i><i></i><i></i><span>STOCK Â· NIVEAUX PAR DÃ‰PÃ”T</span></div>
+          <div class="screen-body">
+            <div class="mock-bars">
+              <div class="bar" style="height:60%"></div>
+              <div class="bar b2" style="height:85%"></div>
+              <div class="bar b3" style="height:35%"></div>
+              <div class="bar" style="height:70%"></div>
+              <div class="bar b2" style="height:50%"></div>
+              <div class="bar b3" style="height:90%"></div>
+              <div class="bar" style="height:40%"></div>
+            </div>
+          </div>
+          <div class="screen-caption">
+            <h4>Niveaux de stock</h4>
+            <p>Visualisation immÃ©diate des quantitÃ©s disponibles par dÃ©pÃ´t.</p>
+          </div>
+        </div>
+
+        <div class="screen-card">
+          <div class="screen-chrome"><i></i><i></i><i></i><span>REPORTING Â· VENTES PAR MODULE</span></div>
+          <div class="screen-body">
+            <div class="mock-report">
+              <div class="donut"></div>
+              <div class="mock-legend">
+                <span><i style="background:var(--accent)"></i>Ventes 45%</span>
+                <span><i style="background:var(--teal)"></i>Stock 27%</span>
+                <span><i style="background:var(--amber)"></i>Achats 28%</span>
+              </div>
+            </div>
+          </div>
+          <div class="screen-caption">
+            <h4>Tableaux de bord</h4>
+            <p>RÃ©partition et marges consolidÃ©es sur toute l'activitÃ©.</p>
+          </div>
+        </div>
+      </div>
+      <p class="screens-note">AperÃ§us illustratifs de l'interface â€” une dÃ©monstration sur vos propres donnÃ©es peut Ãªtre organisÃ©e.</p>
+    </div>
+  </section>
+
   <!-- WHY -->
   <section class="why" id="pourquoi">
     <div class="container">
@@ -840,6 +873,107 @@
           <p>Ajoutez des dÃ©pÃ´ts, des utilisateurs ou des modules au fur et Ã  mesure de vos besoins.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="tarifs">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow mono">TARIFS</div>
+          <h2>Une formule adaptÃ©e Ã  votre taille</h2>
+        </div>
+        <p>Chaque dÃ©ploiement est diffÃ©rent : les tarifs sont Ã©tablis sur devis, selon le nombre d'utilisateurs et de modules.</p>
+      </div>
+
+      <div class="price-grid">
+        <div class="price-card">
+          <span class="price-tag mono">FORMULE 01</span>
+          <h3>Essentiel</h3>
+          <p class="price-desc">Pour dÃ©marrer avec les fonctions clÃ©s d'un ou deux modules.</p>
+          <div class="price-value">Sur devis</div>
+          <ul>
+            <li>1 Ã  2 modules au choix</li>
+            <li>Jusqu'Ã  5 utilisateurs</li>
+            <li>1 dÃ©pÃ´t de stock</li>
+            <li>Mise en route accompagnÃ©e</li>
+            <li>Support par email</li>
+          </ul>
+          <a href="#" class="btn btn-outline price-cta" data-plan="Essentiel">Demander un devis</a>
+        </div>
+
+        <div class="price-card featured">
+          <span class="price-tag mono">FORMULE 02</span>
+          <h3>Business</h3>
+          <p class="price-desc">La suite complÃ¨te Achat / Vente / Stock / Reporting.</p>
+          <div class="price-value">Sur devis</div>
+          <ul>
+            <li>4 modules : Achats, Ventes, Stock, Reporting</li>
+            <li>Utilisateurs illimitÃ©s</li>
+            <li>DÃ©pÃ´ts multiples</li>
+            <li>Tableaux de bord personnalisÃ©s</li>
+            <li>Support prioritaire</li>
+          </ul>
+          <a href="#" class="btn btn-accent price-cta" data-plan="Business">Demander un devis</a>
+        </div>
+
+        <div class="price-card">
+          <span class="price-tag mono">FORMULE 03</span>
+          <h3>Entreprise</h3>
+          <p class="price-desc">Pour les structures multi-sociÃ©tÃ©s avec besoins spÃ©cifiques.</p>
+          <div class="price-value">Sur devis</div>
+          <ul>
+            <li>Multi-sociÃ©tÃ© et consolidation</li>
+            <li>Connexions Ã  vos outils existants</li>
+            <li>DÃ©veloppements sur-mesure</li>
+            <li>Accompagnement dÃ©diÃ©</li>
+            <li>Support prioritaire 7j/7</li>
+          </ul>
+          <a href="#" class="btn btn-outline price-cta" data-plan="Entreprise">Demander un devis</a>
+        </div>
+      </div>
+      <p class="pricing-note">Aucun engagement cachÃ© â€” chaque devis dÃ©taille prÃ©cisÃ©ment le pÃ©rimÃ¨tre et le coÃ»t avant validation.</p>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="avis">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow mono">TÃ‰MOIGNAGES</div>
+          <h2>Ce qu'en disent les Ã©quipes qui l'utilisent</h2>
+        </div>
+      </div>
+
+      <div class="test-grid">
+        <div class="test-card">
+          <div class="test-stars">â˜…â˜…â˜…â˜…â˜…</div>
+          <p class="quote">"Depuis qu'on a regroupÃ© achats et stock au mÃªme endroit, on ne perd plus de temps Ã  recouper des fichiers Excel entre les Ã©quipes."</p>
+          <div class="test-person">
+            <div class="test-avatar">RM</div>
+            <div><div class="name">Responsable Achats</div><div class="role">Secteur distribution</div></div>
+          </div>
+        </div>
+        <div class="test-card">
+          <div class="test-stars">â˜…â˜…â˜…â˜…â˜…</div>
+          <p class="quote">"Le reporting nous donne enfin une vue claire des marges par client, sans attendre la fin du mois pour le savoir."</p>
+          <div class="test-person">
+            <div class="test-avatar">DF</div>
+            <div><div class="name">Directeur Financier</div><div class="role">Secteur industriel</div></div>
+          </div>
+        </div>
+        <div class="test-card">
+          <div class="test-stars">â˜…â˜…â˜…â˜…â˜…</div>
+          <p class="quote">"La mise en route s'est faite sans blocage et l'Ã©quipe commerciale a adoptÃ© l'outil en quelques jours seulement."</p>
+          <div class="test-person">
+            <div class="test-avatar">RC</div>
+            <div><div class="name">Responsable Commercial</div><div class="role">NÃ©goce &amp; grossiste</div></div>
+          </div>
+        </div>
+      </div>
+      <p class="testimonials-note">TÃ©moignages fournis Ã  titre d'exemple â€” Ã  remplacer par les retours rÃ©els de vos premiers clients.</p>
     </div>
   </section>
 
@@ -898,22 +1032,21 @@
               </div>
             </div>
             <div class="field">
-              <label for="fmodule">Module qui vous intÃ©resse</label>
+              <label for="fmodule">Sujet</label>
               <select id="fmodule">
-                <option value="GÃ©nÃ©ral">PrÃ©sentation gÃ©nÃ©rale</option>
-                <option value="Achats">Achats</option>
-                <option value="Ventes">Ventes</option>
-                <option value="Stock">Stock</option>
-                <option value="Reporting">Reporting</option>
+                <option value="PrÃ©sentation gÃ©nÃ©rale">PrÃ©sentation gÃ©nÃ©rale</option>
+                <option value="Module Achats">Module Achats</option>
+                <option value="Module Ventes">Module Ventes</option>
+                <option value="Module Stock">Module Stock</option>
+                <option value="Module Reporting">Module Reporting</option>
+                <option value="Demande de devis">Demande de devis</option>
               </select>
             </div>
             <div class="field">
               <label for="fmsg">Message</label>
               <textarea id="fmsg" placeholder="DÃ©crivez briÃ¨vement votre besoin..."></textarea>
             </div>
-            <button type="submit" class="btn btn-accent wa-submit">
-              Envoyer sur WhatsApp
-            </button>
+            <button type="submit" class="btn btn-accent wa-submit">Envoyer sur WhatsApp</button>
             <p class="form-note">En cliquant, WhatsApp s'ouvre avec votre message prÃ©-rempli Ã  destination de Bassem Ben Abbes.</p>
           </form>
         </div>
@@ -948,6 +1081,16 @@
   document.getElementById("heroWa").href = baseWaLink(defaultMsg);
   document.getElementById("waLink").href = baseWaLink(defaultMsg);
   document.getElementById("floatWa").href = baseWaLink(defaultMsg);
+
+  // pricing CTAs -> whatsapp with plan name
+  document.querySelectorAll(".price-cta").forEach(btn => {
+    btn.addEventListener("click", function(e){
+      e.preventDefault();
+      const plan = this.getAttribute("data-plan");
+      const msg = "Bonjour Bassem, je souhaite un devis pour la formule " + plan + " de la solution Axelor.";
+      window.open(baseWaLink(msg), "_blank", "noopener");
+    });
+  });
 
   // mobile nav
   const toggle = document.getElementById("menuToggle");
